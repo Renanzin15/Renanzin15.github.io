@@ -146,8 +146,13 @@
   /* ===== Conhecimentos ===== */
   .know{display:grid;grid-template-columns:1fr 1fr;gap:18px}
   @media (max-width:760px){.know{grid-template-columns:1fr}}
-  .know-card{background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:24px;box-shadow:var(--shadow);transition:transform .18s, box-shadow .2s}
-  .know-card:hover{transform:translateY(-4px);box-shadow:var(--shadow-lift)}
+  .know-card{position:relative;isolation:isolate;background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:24px;box-shadow:var(--shadow);transition:transform .4s cubic-bezier(.2,.7,.2,1)}
+  .know-card:hover{transform:translateY(-6px)}
+  /* glow fluido (opacity) para os cards interativos */
+  .know-card::after,.pcard::after,.svc::after{content:"";position:absolute;inset:-3px;border-radius:inherit;z-index:-1;
+    pointer-events:none;background:linear-gradient(135deg,var(--accent),var(--accent-2));opacity:0;filter:blur(30px);
+    transition:opacity .55s ease}
+  .know-card:hover::after,.pcard:hover::after,.svc:hover::after{opacity:.55}
   .know-card .ic{width:44px;height:44px;border-radius:12px;display:grid;place-items:center;font-size:1.2rem;background:var(--accent-soft);color:var(--accent);margin-bottom:14px;font-family:var(--mono)}
   .know-card h3{font-size:1.25rem}
   .know-card p{color:var(--muted);font-size:.9rem;margin-top:6px}
@@ -156,9 +161,10 @@
 
   /* ===== Projetos (moldura navegador) ===== */
   .projects{display:flex;flex-direction:column;gap:22px}
-  .pcard{background:var(--surface);border:1px solid var(--line);border-radius:16px;overflow:hidden;box-shadow:var(--shadow);transition:transform .18s, box-shadow .2s}
-  .pcard:hover{transform:translateY(-4px);box-shadow:var(--shadow-lift)}
-  .chrome{display:flex;align-items:center;gap:10px;padding:11px 16px;background:var(--surface-2);border-bottom:1px solid var(--line)}
+  .pcard{position:relative;isolation:isolate;background:var(--surface);border:1px solid var(--line);border-radius:16px;box-shadow:var(--shadow);transition:transform .4s cubic-bezier(.2,.7,.2,1)}
+  .pcard:hover{transform:translateY(-6px)}
+  .chrome{display:flex;align-items:center;gap:10px;padding:11px 16px;background:var(--surface-2);border-bottom:1px solid var(--line);border-radius:16px 16px 0 0}
+  .pbody{border-radius:0 0 16px 16px}
   .chrome .dots{display:flex;gap:6px;flex:none}
   .chrome .dots i{width:11px;height:11px;border-radius:50%;background:var(--line)}
   .chrome .dots i:nth-child(1){background:#ff5f57}
@@ -196,8 +202,8 @@
 
   /* ===== Serviços ===== */
   .svc-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(215px,1fr));gap:18px}
-  .svc{background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:24px;display:flex;flex-direction:column;gap:8px;transition:transform .18s, box-shadow .2s}
-  .svc:hover{transform:translateY(-4px);box-shadow:var(--shadow-lift)}
+  .svc{position:relative;isolation:isolate;background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:24px;display:flex;flex-direction:column;gap:8px;transition:transform .4s cubic-bezier(.2,.7,.2,1)}
+  .svc:hover{transform:translateY(-6px)}
   .svc .ic{width:42px;height:42px;border-radius:12px;display:grid;place-items:center;font-size:1.2rem;background:var(--accent-soft);color:var(--accent)}
   .svc h4{font-size:1.14rem;margin-top:6px}
   .svc p{color:var(--muted);font-size:.9rem}
